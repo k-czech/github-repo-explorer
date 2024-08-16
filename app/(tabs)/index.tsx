@@ -1,31 +1,20 @@
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import {styles} from "@/app/(tabs)/styles";
+import {InputText} from "@/components/InputText/InputText";
+import {Container} from "@/components/Container/Container";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import {FlashList} from "@shopify/flash-list";
+import {data} from "@/data/data";
+import {Accordion} from "@/components/Accordion/Accordion";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-
-export default function TabOneScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-    </View>
-  );
+export default function HomeScreen() {
+    return (
+        <Container style={styles.container}>
+            <InputText placeholder="Search" onChangeText={val => console.log(val)} returnKeyType="search"
+                       keyboardType="web-search" icon={<FontAwesome name="search" size={14} color="white"/>}/>
+            <FlashList data={data} keyExtractor={item => item.id.toString()} renderItem={({item}) => {
+                return <Accordion value={item}/>;
+            }} estimatedItemSize={50}/>
+        </Container>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
