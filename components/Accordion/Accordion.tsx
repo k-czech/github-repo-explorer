@@ -18,10 +18,14 @@ import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import { AccordionContent } from '@/components/Accordion/AccordionContent';
 
 type AccordionProps = {
-	value: Category;
+	avatarUrl?: string;
+	name: string;
+	url?: string;
+	textUrl?: string;
+	content?: Category['content'];
 };
 
-export const Accordion = ({ value }: AccordionProps) => {
+export const Accordion = ({ avatarUrl, name, url, textUrl, content }: AccordionProps) => {
 	const listRef = useAnimatedRef();
 	const heightValue = useSharedValue(0);
 	const open = useSharedValue(false);
@@ -47,15 +51,17 @@ export const Accordion = ({ value }: AccordionProps) => {
 				}}
 				style={styles.titleContainer}
 			>
-				{value.avatar_url ? (
-					<Avatar avatarUrl={value.avatar_url} username={value.login} url={value.html_url} />
+				{avatarUrl ? (
+					<Avatar avatarUrl={avatarUrl} username={name} url={url} textUrl={textUrl} />
 				) : (
 					<View style={GlobalsStyles.flexDirectionColumn}>
-						<Text style={styles.textTitle}>{value.login}</Text>
-						{value.html_url && (
-							<OpenURLButton url={value.html_url} stylesLinkText={GlobalsStyles.marginLeftNone}>
-								Go to github profile
-							</OpenURLButton>
+						<Text style={styles.textTitle}>{name}</Text>
+						{url && (
+							<OpenURLButton
+								url={url}
+								stylesLinkText={GlobalsStyles.marginLeftNone}
+								linkText={textUrl}
+							/>
 						)}
 					</View>
 				)}
@@ -63,7 +69,7 @@ export const Accordion = ({ value }: AccordionProps) => {
 			</Pressable>
 			<Animated.View style={heightAnimationStyle}>
 				<Animated.View style={styles.contentContainer} ref={listRef}>
-					{value.content.map((v, i) => {
+					{content?.map((v, i) => {
 						return (
 							<AccordionContent
 								key={i}

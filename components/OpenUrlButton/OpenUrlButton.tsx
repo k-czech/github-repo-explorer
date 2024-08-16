@@ -4,14 +4,14 @@ import { styles } from '@/components/OpenUrlButton/styles';
 
 type OpenURLButtonProps = {
 	url: string;
-	children: string;
+	linkText?: string;
 	stylesLinkText?: TextStyle;
 	stylesOpenUrlButton?: ViewStyle;
 };
 
 export const OpenURLButton = ({
 	url,
-	children,
+	linkText,
 	stylesLinkText,
 	stylesOpenUrlButton,
 }: OpenURLButtonProps) => {
@@ -27,7 +27,7 @@ export const OpenURLButton = ({
 
 	return (
 		<Pressable onPress={handlePress} style={stylesOpenUrlButton}>
-			<Text style={[styles.link, stylesLinkText]}>{children}</Text>
+			<Text style={[styles.link, stylesLinkText]}>{linkText || url}</Text>
 		</Pressable>
 	);
 };
