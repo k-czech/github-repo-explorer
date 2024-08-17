@@ -8,6 +8,7 @@ import colors from '@/constants/Colors';
 import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import React from 'react';
 import { Repos } from '@/types/Repos';
+import { spacing } from '@/constants/Spacing';
 
 type AccordionContentProps = {
 	name: Repos['name'];
@@ -52,7 +53,9 @@ export const AccordionContent = ({
 					)}
 				</View>
 				{createdAt && (
-					<View style={GlobalsStyles.flexContainerRowSpaceBetween}>
+					<View
+						style={[GlobalsStyles.flexContainerRowSpaceBetween, { marginLeft: spacing.medium }]}
+					>
 						<View style={GlobalsStyles.bulet} />
 						<Text style={[styles.textContent, styles.textContentTitle]}>
 							{convertDateToDateString(new Date(createdAt))}

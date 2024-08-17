@@ -1,5 +1,5 @@
-import { LayoutChangeEvent, Pressable, Text, View } from 'react-native';
-import React, { useCallback, useContext, useEffect } from 'react';
+import { Pressable, Text, View } from 'react-native';
+import React, { useCallback, useContext } from 'react';
 import Animated, {
 	measure,
 	runOnUI,
@@ -37,7 +37,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 	}));
 
 	const handlePress = useCallback(async () => {
-		if (heightValue.value === 0) {
+		if (heightValue.value === 0 && !isLoading) {
 			runOnUI(() => {
 				'worklet';
 				const measuredHeight = measure(listRef)?.height || 0;
@@ -49,31 +49,15 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 		open.value = !open.value;
 		if (onPress && !repositoriesCache[name]) {
 			await onPress();
+			setTimeout(() => {
+				runOnUI(() => {
+					'worklet';
+					const measuredHeight = measure(listRef)?.height || 0;
+					heightValue.value = withTiming(measuredHeight);
+				})();
+			}, 200);
 		}
-	}, [onPress, open, heightValue, repositoriesCache]);
-
-	const handleLayout = useCallback(
-		(event: LayoutChangeEvent) => {
-			const { height } = event.nativeEvent.layout;
-			const marginVertical = 20;
-
-			runOnUI(() => {
-				'worklet';
-				const totalHeight = repositoriesCache[name]
-					? repositoriesCache[name].reduce((totalHeight, _, index) => {
-							return totalHeight + height + (index > 0 ? marginVertical : 0);
-						}, 0)
-					: height;
-
-				heightValue.value = withTiming(totalHeight);
-			})();
-		},
-		[repositoriesCache, name, heightValue],
-	);
-
-	useEffect(() => {
-		heightValue.value = 0;
-	}, [name]);
+	}, [onPress, open, heightValue, repositoriesCache, name, isLoading, listRef]);
 
 	return (
 		<View style={styles.container}>
@@ -114,7 +98,6 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 								repoUrl={item.html_url}
 								forks={item.forks}
 								starsCount={item.stargazers_count}
-								handleLayout={handleLayout}
 							/>
 						))
 					) : (
