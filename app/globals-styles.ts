@@ -1,10 +1,12 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Dimensions, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import colors from '@/constants/Colors';
+import { spacing } from '@/constants/Spacing';
 
 type GlobalStyle = {
 	flexDirectionColumn: ViewStyle;
 	marginLeftNone: TextStyle;
 	flexContainerRowSpaceBetween: ViewStyle;
+	flexContainerCenter: ViewStyle;
 	flex: ViewStyle;
 	bulet: ViewStyle;
 };
@@ -49,6 +51,13 @@ export default StyleSheet.create<GlobalStyle>({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+	},
+	flexContainerCenter: {
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		height: Dimensions.get('window').height - 200,
+		paddingHorizontal: spacing.medium,
 	},
 	flex: {
 		flex: 1,

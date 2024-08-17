@@ -1,6 +1,5 @@
-import { Pressable, Text, View } from 'react-native';
-import React from 'react';
-import { Category } from '@/data/data';
+import { LayoutChangeEvent, Pressable, Text, View } from 'react-native';
+import React, { useCallback, useContext, useEffect } from 'react';
 import Animated, {
 	measure,
 	runOnUI,
@@ -16,41 +15,69 @@ import { Avatar } from '@/components/Avatar/Avatar';
 import GlobalsStyles from '@/app/globals-styles';
 import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import { AccordionContent } from '@/components/Accordion/AccordionContent';
+import { UsersRepositoriesContext } from '@/context/UserRepositoriesContext';
 
 type AccordionProps = {
 	avatarUrl?: string;
 	name: string;
 	url?: string;
 	textUrl?: string;
-	content?: Category['content'];
+	onPress?: () => Promise<void>;
 };
 
-export const Accordion = ({ avatarUrl, name, url, textUrl, content }: AccordionProps) => {
+export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionProps) => {
 	const listRef = useAnimatedRef();
 	const heightValue = useSharedValue(0);
 	const open = useSharedValue(false);
 	const progress = useDerivedValue(() => (open.value ? withTiming(1) : withTiming(0)));
+	const { repositoriesCache, isLoading } = useContext(UsersRepositoriesContext);
 
 	const heightAnimationStyle = useAnimatedStyle(() => ({
 		height: heightValue.value,
 	}));
 
+	const handlePress = useCallback(async () => {
+		if (heightValue.value === 0) {
+			runOnUI(() => {
+				'worklet';
+				const measuredHeight = measure(listRef)?.height || 0;
+				heightValue.value = withTiming(measuredHeight);
+			})();
+		} else {
+			heightValue.value = withTiming(0);
+		}
+		open.value = !open.value;
+		if (onPress && !repositoriesCache[name]) {
+			await onPress();
+		}
+	}, [onPress, open, heightValue, repositoriesCache]);
+
+	const handleLayout = useCallback(
+		(event: LayoutChangeEvent) => {
+			const { height } = event.nativeEvent.layout;
+			const marginVertical = 20;
+
+			runOnUI(() => {
+				'worklet';
+				const totalHeight = repositoriesCache[name]
+					? repositoriesCache[name].reduce((totalHeight, _, index) => {
+							return totalHeight + height + (index > 0 ? marginVertical : 0);
+						}, 0)
+					: height;
+
+				heightValue.value = withTiming(totalHeight);
+			})();
+		},
+		[repositoriesCache, name, heightValue],
+	);
+
+	useEffect(() => {
+		heightValue.value = 0;
+	}, [name]);
+
 	return (
 		<View style={styles.container}>
-			<Pressable
-				onPress={() => {
-					if (heightValue.value === 0) {
-						runOnUI(() => {
-							'worklet';
-							heightValue.value = withTiming(measure(listRef)!.height);
-						})();
-					} else {
-						heightValue.value = withTiming(0);
-					}
-					open.value = !open.value;
-				}}
-				style={styles.titleContainer}
-			>
+			<Pressable onPress={handlePress} style={styles.titleContainer}>
 				{avatarUrl ? (
 					<Avatar avatarUrl={avatarUrl} username={name} url={url} textUrl={textUrl} />
 				) : (
@@ -69,23 +96,32 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, content }: AccordionP
 			</Pressable>
 			<Animated.View style={heightAnimationStyle}>
 				<Animated.View style={styles.contentContainer} ref={listRef}>
-					{content?.map((v, i) => {
-						return (
+					{isLoading ? (
+						<View style={styles.titleContainer}>
+							<Text style={styles.textTitle}>Loading...</Text>
+						</View>
+					) : repositoriesCache[name]?.length > 0 ? (
+						repositoriesCache[name]?.map((item) => (
 							<AccordionContent
-								key={i}
-								name={v.name}
-								description={v.description}
-								createdAt={v.created_at}
+								key={`${item.name}-${item.id}`}
+								name={item.name}
+								description={item.description}
+								createdAt={item.created_at}
 								hasRepoTags={true}
-								visibility={v.visibility}
-								defaultBranch={v.default_branch}
-								watchers={v.watchers}
-								repoUrl={v.html_url}
-								forks={v.forks}
-								starsCount={v.stargazers_count}
+								visibility={item.visibility}
+								defaultBranch={item.default_branch}
+								watchers={item.watchers}
+								repoUrl={item.html_url}
+								forks={item.forks}
+								starsCount={item.stargazers_count}
+								handleLayout={handleLayout}
 							/>
-						);
-					})}
+						))
+					) : (
+						<View style={styles.titleContainer}>
+							<Text style={styles.textTitle}>No repositories</Text>
+						</View>
+					)}
 				</Animated.View>
 			</Animated.View>
 		</View>

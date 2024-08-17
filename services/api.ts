@@ -17,9 +17,14 @@ export const executeAPI = async <T>({ url, method, body, headers }: RequestProps
 		headers: {
 			accept: 'application/vnd.github+json',
 			'X-GitHub-Api-Version': '2022-11-28',
+			Authorization: `Bearer ${CONFIG.ACCESS_TOKEN}`,
 			...headers,
 		},
 	});
+
+	if (!response.ok) {
+		throw new Error('Failed to fetch data');
+	}
 
 	return response.json();
 };
