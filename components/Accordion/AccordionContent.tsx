@@ -1,5 +1,5 @@
 import { styles } from '@/components/Accordion/styles';
-import { Text, View } from 'react-native';
+import { LayoutChangeEvent, Text, View } from 'react-native';
 import GlobalsStyles from '@/app/globals-styles';
 import { convertDateToDateString } from '@/lib/utils';
 import { Tag } from '@/components/Tag/Tag';
@@ -8,6 +8,7 @@ import colors from '@/constants/Colors';
 import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import React from 'react';
 import { Repos } from '@/types/Repos';
+import { spacing } from '@/constants/Spacing';
 
 type AccordionContentProps = {
 	name: Repos['name'];
@@ -20,6 +21,7 @@ type AccordionContentProps = {
 	repoUrl: Repos['html_url'];
 	forks: Repos['forks'];
 	starsCount: Repos['stargazers_count'];
+	handleLayout?: (event: LayoutChangeEvent) => void;
 };
 
 export const AccordionContent = ({
@@ -33,18 +35,27 @@ export const AccordionContent = ({
 	repoUrl,
 	forks,
 	starsCount,
+	handleLayout,
 }: AccordionContentProps) => {
 	return (
-		<View style={styles.content}>
+		<View style={styles.content} onLayout={handleLayout}>
 			<View style={GlobalsStyles.flexContainerRowSpaceBetween}>
 				<View style={GlobalsStyles.flex}>
 					<Text style={[styles.textContent, styles.textContentTitle]}>{name}</Text>
 					{description && (
-						<Text style={[styles.textContent, styles.textContentDescription]}>{description}</Text>
+						<Text
+							style={[styles.textContent, styles.textContentDescription]}
+							numberOfLines={4}
+							ellipsizeMode="tail"
+						>
+							{description}
+						</Text>
 					)}
 				</View>
 				{createdAt && (
-					<View style={GlobalsStyles.flexContainerRowSpaceBetween}>
+					<View
+						style={[GlobalsStyles.flexContainerRowSpaceBetween, { marginLeft: spacing.medium }]}
+					>
 						<View style={GlobalsStyles.bulet} />
 						<Text style={[styles.textContent, styles.textContentTitle]}>
 							{convertDateToDateString(new Date(createdAt))}
@@ -75,9 +86,8 @@ export const AccordionContent = ({
 							url={repoUrl}
 							stylesOpenUrlButton={styles.linkButton}
 							stylesLinkText={styles.linkButtonText}
-						>
-							Go to repository
-						</OpenURLButton>
+							linkText="Go to repository"
+						/>
 					)}
 				</>
 			)}
