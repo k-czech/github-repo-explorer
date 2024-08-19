@@ -1,9 +1,10 @@
 import { Image } from 'expo-image';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
 import { styles } from '@/components/Avatar/styles';
 import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import { blurhash } from '@/constants/Const';
+import { StyledText } from '@/components/StyledText';
 
 type AvatarProps = {
 	username: string;
@@ -23,7 +24,7 @@ export const Avatar = ({ username, avatarUrl, url, textUrl }: AvatarProps) => {
 				transition={1000}
 			/>
 			<View>
-				<Text style={styles.textTitle}>{username}</Text>
+				<StyledText style={styles.textTitle}>{username}</StyledText>
 				{url && <OpenURLButton url={url} linkText={textUrl} />}
 			</View>
 		</View>

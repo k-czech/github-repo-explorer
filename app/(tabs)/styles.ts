@@ -37,7 +37,6 @@ export const styles = StyleSheet.create<ScreenStylesProps>({
 	},
 	changeLanguageText: {
 		color: colors.default.white,
-		fontWeight: '500',
 		fontSize: 14,
 	},
 	changeLanguageButtonActive: {

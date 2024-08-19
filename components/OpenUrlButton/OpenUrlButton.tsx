@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import { Alert, Linking, Pressable, Text, TextStyle, ViewStyle } from 'react-native';
+import { Alert, Linking, Pressable, TextStyle, ViewStyle } from 'react-native';
 import { styles } from '@/components/OpenUrlButton/styles';
 import { useTranslation } from 'react-i18next';
+import { StyledText } from '@/components/StyledText';
 
 type OpenURLButtonProps = {
 	url: string;
@@ -29,7 +30,7 @@ export const OpenURLButton = ({
 
 	return (
 		<Pressable onPress={handlePress} style={stylesOpenUrlButton}>
-			<Text style={[styles.link, stylesLinkText]}>{linkText || url}</Text>
+			<StyledText style={[styles.link, stylesLinkText]}>{linkText || url}</StyledText>
 		</Pressable>
 	);
 };

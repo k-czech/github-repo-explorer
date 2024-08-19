@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="809e917e-3ace-43ad-8a65-c97ff02ca657" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/+not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/+not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Accordion/Accordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Accordion/Accordion.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Accordion/AccordionContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Accordion/AccordionContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Avatar/Avatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Avatar/Avatar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/EmptySearch/EmptySearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/EmptySearch/EmptySearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/EmptySearch/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/EmptySearch/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/OpenUrlButton/OpenUrlButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/OpenUrlButton/OpenUrlButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/StyledText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/StyledText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Tag/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Tag/Tag.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Jest.renders correctly.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "develop",
     "js.linters.configure.manually.selectedeslint": "true",
@@ -60,6 +67,7 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/kamilczech/Desktop/mzstudiocode/github-repo-explorer/node_modules/jest",
     "nodejs_package_manager_path": "pnpm",
     "prettierjs.PrettierConfiguration.Package": "/Users/kamilczech/Desktop/mzstudiocode/github-repo-explorer/node_modules/prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
@@ -74,6 +82,25 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="renders correctly" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/components/__tests__/StyledText-test.js" />
+      <test-names>
+        <test-name value="renders correctly" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.renders correctly" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

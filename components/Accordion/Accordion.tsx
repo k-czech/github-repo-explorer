@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import React, { useCallback, useContext } from 'react';
 import Animated, {
 	measure,
@@ -17,6 +17,7 @@ import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import { AccordionContent } from '@/components/Accordion/AccordionContent';
 import { UsersRepositoriesContext } from '@/context/UserRepositoriesContext';
 import { useTranslation } from 'react-i18next';
+import { StyledText } from '@/components/StyledText';
 
 type AccordionProps = {
 	avatarUrl?: string;
@@ -68,7 +69,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 					<Avatar avatarUrl={avatarUrl} username={name} url={url} textUrl={textUrl} />
 				) : (
 					<View style={GlobalsStyles.flexDirectionColumn}>
-						<Text style={styles.textTitle}>{name}</Text>
+						<StyledText style={styles.textTitle}>{name}</StyledText>
 						{url && (
 							<OpenURLButton
 								url={url}
@@ -84,7 +85,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 				<Animated.View style={styles.contentContainer} ref={listRef}>
 					{isLoading ? (
 						<View style={styles.titleContainer}>
-							<Text style={styles.textTitle}>{t('common:loading')}</Text>
+							<StyledText style={styles.textTitle}>{t('common:loading')}</StyledText>
 						</View>
 					) : repositoriesCache[name]?.length > 0 ? (
 						repositoriesCache[name]?.map((item) => (
@@ -104,7 +105,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 						))
 					) : (
 						<View style={styles.titleContainer}>
-							<Text style={styles.textTitle}>{t('home-screen:no-result-repos')}</Text>
+							<StyledText style={styles.textTitle}>{t('home-screen:no-result-repos')}</StyledText>
 						</View>
 					)}
 				</Animated.View>

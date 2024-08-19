@@ -1,5 +1,5 @@
 import { styles } from '@/components/Accordion/styles';
-import { LayoutChangeEvent, Text, View } from 'react-native';
+import { LayoutChangeEvent, View } from 'react-native';
 import GlobalsStyles from '@/app/globals-styles';
 import { convertDateToDateString } from '@/lib/utils';
 import { Tag } from '@/components/Tag/Tag';
@@ -10,6 +10,7 @@ import React from 'react';
 import { Repos } from '@/types/Repos';
 import { spacing } from '@/constants/Spacing';
 import { useTranslation } from 'react-i18next';
+import { StyledText } from '@/components/StyledText';
 
 type AccordionContentProps = {
 	name: Repos['name'];
@@ -43,15 +44,15 @@ export const AccordionContent = ({
 		<View style={styles.content} onLayout={handleLayout}>
 			<View style={GlobalsStyles.flexContainerRowSpaceBetween}>
 				<View style={GlobalsStyles.flex}>
-					<Text style={[styles.textContent, styles.textContentTitle]}>{name}</Text>
+					<StyledText style={[styles.textContent, styles.textContentTitle]}>{name}</StyledText>
 					{description && (
-						<Text
+						<StyledText
 							style={[styles.textContent, styles.textContentDescription]}
 							numberOfLines={4}
 							ellipsizeMode="tail"
 						>
 							{description}
-						</Text>
+						</StyledText>
 					)}
 				</View>
 				{createdAt && (
@@ -59,9 +60,9 @@ export const AccordionContent = ({
 						style={[GlobalsStyles.flexContainerRowSpaceBetween, { marginLeft: spacing.medium }]}
 					>
 						<View style={GlobalsStyles.bulet} />
-						<Text style={[styles.textContent, styles.textContentTitle]}>
+						<StyledText style={[styles.textContent, styles.textContentTitle]}>
 							{convertDateToDateString(new Date(createdAt))}
-						</Text>
+						</StyledText>
 					</View>
 				)}
 			</View>
