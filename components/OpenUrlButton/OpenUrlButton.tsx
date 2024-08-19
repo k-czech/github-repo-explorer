@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Alert, Linking, Pressable, Text, TextStyle, ViewStyle } from 'react-native';
 import { styles } from '@/components/OpenUrlButton/styles';
+import { useTranslation } from 'react-i18next';
 
 type OpenURLButtonProps = {
 	url: string;
@@ -17,11 +18,12 @@ export const OpenURLButton = ({
 }: OpenURLButtonProps) => {
 	const handlePress = useCallback(async () => {
 		const supported = await Linking.canOpenURL(url);
+		const { t } = useTranslation();
 
 		if (supported) {
 			await Linking.openURL(url);
 		} else {
-			Alert.alert(`Don't know how to open this URL: ${url}`);
+			Alert.alert(`${t('common:alert')}: ${url}`);
 		}
 	}, [url]);
 

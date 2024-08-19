@@ -7,6 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 import { UsersProvider } from '@/context/UsersContext';
 import { UsersRepositoriesProvider } from '@/context/UserRepositoriesContext';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -49,14 +50,15 @@ export default function RootLayout() {
 function RootLayoutNav() {
 	return (
 		<ThemeProvider value={DarkTheme}>
-			<UsersProvider>
-				<UsersRepositoriesProvider>
-					<Stack>
-						<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-						{/*<Stack.Screen name="modal" options={{presentation: 'modal'}}/>*/}
-					</Stack>
-				</UsersRepositoriesProvider>
-			</UsersProvider>
+			<LanguageProvider>
+				<UsersProvider>
+					<UsersRepositoriesProvider>
+						<Stack>
+							<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+						</Stack>
+					</UsersRepositoriesProvider>
+				</UsersProvider>
+			</LanguageProvider>
 		</ThemeProvider>
 	);
 }

@@ -16,6 +16,7 @@ import GlobalsStyles from '@/app/globals-styles';
 import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import { AccordionContent } from '@/components/Accordion/AccordionContent';
 import { UsersRepositoriesContext } from '@/context/UserRepositoriesContext';
+import { useTranslation } from 'react-i18next';
 
 type AccordionProps = {
 	avatarUrl?: string;
@@ -31,6 +32,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 	const open = useSharedValue(false);
 	const progress = useDerivedValue(() => (open.value ? withTiming(1) : withTiming(0)));
 	const { repositoriesCache, isLoading } = useContext(UsersRepositoriesContext);
+	const { t } = useTranslation();
 
 	const heightAnimationStyle = useAnimatedStyle(() => ({
 		height: heightValue.value,
@@ -82,7 +84,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 				<Animated.View style={styles.contentContainer} ref={listRef}>
 					{isLoading ? (
 						<View style={styles.titleContainer}>
-							<Text style={styles.textTitle}>Loading...</Text>
+							<Text style={styles.textTitle}>{t('common:loading')}</Text>
 						</View>
 					) : repositoriesCache[name]?.length > 0 ? (
 						repositoriesCache[name]?.map((item) => (
@@ -102,7 +104,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 						))
 					) : (
 						<View style={styles.titleContainer}>
-							<Text style={styles.textTitle}>No repositories</Text>
+							<Text style={styles.textTitle}>{t('home-screen:no-result-repos')}</Text>
 						</View>
 					)}
 				</Animated.View>

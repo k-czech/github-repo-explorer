@@ -9,15 +9,17 @@ import { UsersContext } from '@/context/UsersContext';
 import { UsersRepositoriesContext } from '@/context/UserRepositoriesContext';
 import { Text } from 'react-native';
 import { EmptySearch } from '@/components/EmptySearch/EmptySearch';
+import { useTranslation } from 'react-i18next';
 
 export default function HomeScreen() {
 	const { setSearchText, searchUsersByUsername, users } = useContext(UsersContext);
 	const { getUserRepositories, isLoading } = useContext(UsersRepositoriesContext);
+	const { t } = useTranslation();
 
 	return (
 		<Container style={styles.container}>
 			<InputText
-				placeholder="Search"
+				placeholder={t('home-screen:enter-username')}
 				onChangeText={(val) => setSearchText(val)}
 				returnKeyType="search"
 				keyboardType="web-search"
@@ -31,14 +33,14 @@ export default function HomeScreen() {
 					return (
 						<>
 							{isLoading ? (
-								<Text>Loading...</Text>
+								<Text>{t('common:loading')}</Text>
 							) : (
 								<Accordion
 									key={`${item.login}-${item.id}`}
 									avatarUrl={item.avatar_url}
 									name={item.login}
 									url={item.html_url}
-									textUrl="Go to Github profile"
+									textUrl={t('home-screen:go-to-github-profile')}
 									onPress={async () => {
 										await getUserRepositories(item.login);
 									}}
@@ -48,9 +50,7 @@ export default function HomeScreen() {
 					);
 				}}
 				estimatedItemSize={50}
-				ListEmptyComponent={
-					<EmptySearch noResultText="Search for users or change search criteria" />
-				}
+				ListEmptyComponent={<EmptySearch noResultText={t('home-screen:no-result-text')} />}
 			/>
 		</Container>
 	);

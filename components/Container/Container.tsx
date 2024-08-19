@@ -1,14 +1,11 @@
-import {SafeAreaView, View, ViewProps} from "react-native";
-import React, {ReactNode} from "react";
+import { SafeAreaView, View, ViewProps } from 'react-native';
+import React, { PropsWithChildren } from 'react';
+import GlobalsStyles from '@/app/globals-styles';
 
-type ContainerProps = ViewProps & {
-    children: ReactNode
-}
-
-export const Container = ({children, ...props}: ContainerProps) => {
-    return (
-        <SafeAreaView style={{flex: 1}} {...props}>
-            <View style={{flex: 1}}>{children}</View>
-        </SafeAreaView>
-    );
-}
+export const Container = ({ children, ...props }: PropsWithChildren & ViewProps) => {
+	return (
+		<SafeAreaView style={GlobalsStyles.flex} {...props}>
+			<View style={GlobalsStyles.flex}>{children}</View>
+		</SafeAreaView>
+	);
+};
