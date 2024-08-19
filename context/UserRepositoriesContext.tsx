@@ -33,8 +33,6 @@ export const UsersRepositoriesProvider = ({ children }: PropsWithChildren) => {
 					method: 'GET',
 				});
 
-				console.log(response, 'response');
-
 				setRepositoriesCache((prevCache) => ({
 					...prevCache,
 					[username]: response,
