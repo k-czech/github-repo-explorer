@@ -1,4 +1,4 @@
-import CONFIG from '@/config';
+import { ACCESS_TOKEN, BASE_URL } from '@env';
 
 type RequestProps = {
 	url: string;
@@ -8,16 +8,17 @@ type RequestProps = {
 };
 
 export const executeAPI = async <T>({ url, method, body, headers }: RequestProps): Promise<T> => {
-	if (!CONFIG.BASE_URL) {
+	if (!BASE_URL) {
 		throw new Error('BASE_URL is not defined');
 	}
-	const response = await fetch(`${CONFIG.BASE_URL}/${url}`, {
+
+	const response = await fetch(`${BASE_URL}/${url}`, {
 		method,
 		body,
 		headers: {
 			accept: 'application/vnd.github+json',
 			'X-GitHub-Api-Version': '2022-11-28',
-			Authorization: `Bearer ${CONFIG.ACCESS_TOKEN}`,
+			Authorization: `Bearer ${ACCESS_TOKEN}`,
 			...headers,
 		},
 	});
