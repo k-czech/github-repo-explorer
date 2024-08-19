@@ -16,10 +16,11 @@ export const styles = StyleSheet.create<ScreenStylesProps>({
 		flex: 1,
 		backgroundColor: colors.default.gray900,
 		marginHorizontal: 20,
+		marginVertical: 30,
 	},
 	title: {
 		fontSize: 20,
-		fontWeight: 'bold',
+		color: colors.default.white,
 	},
 	languageWrapper: {
 		flexDirection: 'column',
