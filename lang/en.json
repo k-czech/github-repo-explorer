@@ -1,0 +1,21 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "polish": "Polish",
+    "english": "English",
+    "german": "German",
+    "alert": "I don't know how to open this URL",
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "home-screen": {
+    "no-result-text": "Search for users or change search criteria",
+    "enter-username": "Enter username",
+    "go-to-github-profile": "Go to GitHub profile",
+    "go-to-repo": "Go to repository",
+    "no-result-repos": "No repositories found"
+  },
+  "settings-screen": {
+    "change-language": "Change language"
+  }
+}

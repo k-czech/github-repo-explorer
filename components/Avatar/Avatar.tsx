@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import React from 'react';
 import { styles } from '@/components/Avatar/styles';
 import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
+import { blurhash } from '@/constants/Const';
 
 type AvatarProps = {
 	username: string;
@@ -10,9 +11,6 @@ type AvatarProps = {
 	textUrl?: string;
 	url?: string;
 };
-
-const blurhash =
-	'|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
 export const Avatar = ({ username, avatarUrl, url, textUrl }: AvatarProps) => {
 	return (

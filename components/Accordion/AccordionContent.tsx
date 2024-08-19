@@ -9,6 +9,7 @@ import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
 import React from 'react';
 import { Repos } from '@/types/Repos';
 import { spacing } from '@/constants/Spacing';
+import { useTranslation } from 'react-i18next';
 
 type AccordionContentProps = {
 	name: Repos['name'];
@@ -37,6 +38,7 @@ export const AccordionContent = ({
 	starsCount,
 	handleLayout,
 }: AccordionContentProps) => {
+	const { t } = useTranslation();
 	return (
 		<View style={styles.content} onLayout={handleLayout}>
 			<View style={GlobalsStyles.flexContainerRowSpaceBetween}>
@@ -86,7 +88,7 @@ export const AccordionContent = ({
 							url={repoUrl}
 							stylesOpenUrlButton={styles.linkButton}
 							stylesLinkText={styles.linkButtonText}
-							linkText="Go to repository"
+							linkText={t('home-screen:go-to-repo')}
 						/>
 					)}
 				</>
