@@ -17,16 +17,16 @@ export const OpenURLButton = ({
 	stylesLinkText,
 	stylesOpenUrlButton,
 }: OpenURLButtonProps) => {
+	const { t } = useTranslation();
 	const handlePress = useCallback(async () => {
 		const supported = await Linking.canOpenURL(url);
-		const { t } = useTranslation();
 
 		if (supported) {
 			await Linking.openURL(url);
 		} else {
 			Alert.alert(`${t('common:alert')}: ${url}`);
 		}
-	}, [url]);
+	}, [url, t]);
 
 	return (
 		<Pressable onPress={handlePress} style={stylesOpenUrlButton}>

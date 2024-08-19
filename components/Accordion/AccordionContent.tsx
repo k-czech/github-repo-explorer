@@ -41,7 +41,7 @@ export const AccordionContent = ({
 }: AccordionContentProps) => {
 	const { t } = useTranslation();
 	return (
-		<View style={styles.content} onLayout={handleLayout}>
+		<View style={styles.content} onLayout={handleLayout} testID="accordion-content-view">
 			<View style={GlobalsStyles.flexContainerRowSpaceBetween}>
 				<View style={GlobalsStyles.flex}>
 					<StyledText style={[styles.textContent, styles.textContentTitle]}>{name}</StyledText>
