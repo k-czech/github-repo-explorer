@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import { StyledText } from '@/components/StyledText';
-import { describe, expect, it } from '@jest/globals';
 
 describe('StyledText Component', () => {
 	it('should render text correctly', () => {

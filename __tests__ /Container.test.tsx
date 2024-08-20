@@ -3,7 +3,6 @@ import { render } from '@testing-library/react-native';
 import { Container } from '@/components/Container/Container';
 import GlobalsStyles from '@/app/globals-styles';
 import { Text } from 'react-native';
-import { describe, expect, it } from '@jest/globals';
 
 describe('Container Component', () => {
 	it('should render children correctly', () => {

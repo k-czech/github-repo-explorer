@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import { Chevron } from '@/components/Accordion/Chevron';
-import { describe, expect, it } from '@jest/globals';
 
 jest.mock('react-native-reanimated', () => {
 	// eslint-disable-next-line @typescript-eslint/no-require-imports

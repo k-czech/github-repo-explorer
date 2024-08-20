@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import { describe, expect, it } from '@jest/globals';
 import { Avatar } from '@/components/Avatar/Avatar';
 import { styles } from '@/components/Avatar/styles';
 
@@ -16,9 +15,9 @@ describe('Avatar Component', () => {
 		const image = getByTestId('avatar-image');
 		expect(image).toBeTruthy();
 
-		expect(image.props.source).toEqual({ uri: avatarUrl });
+		expect(image.props.source[0]).toEqual({ uri: avatarUrl });
 
-		expect(image.props.style).toEqual(expect.arrayContaining([styles.avatar]));
+		expect(image.props.style).toEqual(styles.avatar);
 	});
 
 	it('should render the username text correctly', () => {

@@ -3,7 +3,6 @@ import { render } from '@testing-library/react-native';
 import { View } from 'react-native';
 import GlobalsStyles from '@/app/globals-styles';
 import { Tag } from '@/components/Tag/Tag';
-import { describe, expect, it } from '@jest/globals';
 
 describe('Tag Component', () => {
 	it('should render the Tag component correctly', () => {

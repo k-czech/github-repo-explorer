@@ -1,17 +1,17 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import colors from '@/constants/Colors';
 import { EmptySearch } from '@/components/EmptySearch/EmptySearch';
 import GlobalsStyles from '@/app/globals-styles';
 import { styles } from '@/components/EmptySearch/styles';
-import { describe, expect, it } from '@jest/globals';
+import colors from '@/constants/Colors';
 
 describe('EmptySearch Component', () => {
 	it('should render the FontAwesome search icon', () => {
 		const { getByTestId } = render(<EmptySearch noResultText="No results found" />);
 
-		const icon = getByTestId('search-icon');
-		expect(icon).toBeTruthy();
+		const iconWrapper = getByTestId('empty-search-container');
+		expect(iconWrapper).toBeTruthy();
+		const icon = iconWrapper.children[0];
 		expect(icon.props.name).toBe('search');
 		expect(icon.props.size).toBe(100);
 		expect(icon.props.color).toBe(colors.default.primary);

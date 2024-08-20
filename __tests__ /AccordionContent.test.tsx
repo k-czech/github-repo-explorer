@@ -2,7 +2,6 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import { AccordionContent } from '@/components/Accordion/AccordionContent';
 import { convertDateToDateString } from '@/lib/utils';
-import { describe, expect, it } from '@jest/globals';
 
 describe('AccordionContent Component', () => {
 	const mockProps = {

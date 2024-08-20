@@ -1,10 +1,9 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react-native';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import colors from '@/constants/Colors';
 import { InputText } from '@/components/InputText/InputText';
 import styles from '@/components/InputText/styles';
-import { Pressable, View } from 'react-native';
-import { describe, expect, it } from '@jest/globals';
+import { View } from 'react-native';
 
 describe('InputText Component', () => {
 	it('should render TextInput with correct props', () => {
@@ -33,25 +32,24 @@ describe('InputText Component', () => {
 		expect(input.props.style).toEqual(expect.not.arrayContaining([styles.focused]));
 	});
 
-	it('should render the icon and Pressable when keyboardType is "web-search"', () => {
-		const onPressMock = jest.fn();
+	it('should render the icon and Pressable when keyboardType is "web-search"', async () => {
+		const onPressMock = jest.fn().mockResolvedValue(undefined);
 		const TestIcon = () => <View testID="test-icon" />;
 
-		const { getByTestId, queryByTestId } = render(
+		const { getByTestId } = render(
 			<InputText keyboardType="web-search" icon={<TestIcon />} onPressSearch={onPressMock} />,
 		);
 
 		const icon = getByTestId('test-icon');
 		expect(icon).toBeTruthy();
 
-		const pressable = queryByTestId('test-icon')?.parentElement as React.ReactElement;
-
-		expect(pressable.type).toBe(Pressable);
-
-		expect(pressable.props.onPress).toBe(onPressMock);
+		const pressable = getByTestId('pressable-icon-button');
 
 		fireEvent.press(pressable);
-		expect(onPressMock).toHaveBeenCalled();
+
+		await waitFor(() => {
+			expect(onPressMock).toHaveBeenCalled();
+		});
 	});
 
 	it('should not render Pressable if keyboardType is not "web-search"', () => {

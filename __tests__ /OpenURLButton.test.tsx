@@ -2,7 +2,6 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import { Alert, Linking } from 'react-native';
 import { OpenURLButton } from '@/components/OpenUrlButton/OpenUrlButton';
-import { afterEach, describe, expect, it } from '@jest/globals';
 
 jest.mock('react-native/Libraries/Linking/Linking', () => ({
 	canOpenURL: jest.fn(),
@@ -78,7 +77,9 @@ describe('OpenURLButton Component', () => {
 		const appliedStyles = Array.isArray(linkElement.props.style)
 			? linkElement.props.style.flat()
 			: [linkElement.props.style];
-		const foundStyle = appliedStyles.find((style) => style.color === customTextStyle.color);
+		const foundStyle = appliedStyles.find(
+			(style: { color: string }) => style.color === customTextStyle.color,
+		);
 
 		expect(foundStyle).toBeTruthy();
 	});
