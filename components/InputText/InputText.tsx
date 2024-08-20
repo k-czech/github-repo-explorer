@@ -5,7 +5,7 @@ import colors from '@/constants/Colors';
 
 type InputTextProps = TextInputProps & {
 	icon?: React.ReactNode;
-	onPressSearch: PressableProps['onPress'];
+	onPressSearch?: PressableProps['onPress'];
 };
 
 export const InputText = ({ icon, onPressSearch, ...props }: InputTextProps) => {
@@ -24,7 +24,11 @@ export const InputText = ({ icon, onPressSearch, ...props }: InputTextProps) => 
 				style={[styles.input, focused && styles.focused, props.style]}
 			/>
 			{props.keyboardType === 'web-search' && icon && (
-				<Pressable onPress={onPressSearch} style={styles.iconWrapper}>
+				<Pressable
+					onPress={onPressSearch}
+					style={styles.iconWrapper}
+					testID="pressable-icon-button"
+				>
 					{icon}
 				</Pressable>
 			)}

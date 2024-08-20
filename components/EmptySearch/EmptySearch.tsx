@@ -12,8 +12,8 @@ type EmptySearchProps = {
 
 export const EmptySearch = ({ noResultText }: EmptySearchProps) => {
 	return (
-		<View style={GlobalsStyles.flexContainerCenter}>
-			<FontAwesome name="search" size={100} color={colors.default.primary} />
+		<View style={GlobalsStyles.flexContainerCenter} testID="empty-search-container">
+			<FontAwesome name="search" size={100} color={colors.default.primary} testID="search-icon" />
 			<StyledText style={styles.noResultText}>{noResultText}</StyledText>
 		</View>
 	);

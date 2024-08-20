@@ -22,6 +22,7 @@ export const Avatar = ({ username, avatarUrl, url, textUrl }: AvatarProps) => {
 				placeholder={{ blurhash }}
 				contentFit="cover"
 				transition={1000}
+				testID="avatar-image"
 			/>
 			<View>
 				<StyledText style={styles.textTitle}>{username}</StyledText>

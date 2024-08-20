@@ -64,7 +64,7 @@ export const Accordion = ({ avatarUrl, name, url, textUrl, onPress }: AccordionP
 
 	return (
 		<View style={styles.container}>
-			<Pressable onPress={handlePress} style={styles.titleContainer}>
+			<Pressable onPress={handlePress} style={styles.titleContainer} testID="pressable">
 				{avatarUrl ? (
 					<Avatar avatarUrl={avatarUrl} username={name} url={url} textUrl={textUrl} />
 				) : (
