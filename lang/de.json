@@ -1,0 +1,21 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "polish": "Polnisch",
+    "english": "Englisch",
+    "german": "Deutsch",
+    "alert": "Ich weiß nicht, wie das URL geöffnet werden kann",
+    "home": "Startseite",
+    "settings": "Einstellungen"
+  },
+  "home-screen": {
+    "no-result-text": "Benutzer suchen oder Suchkriterien ändern",
+    "enter-username": "Benutzername eingeben",
+    "go-to-github-profile": "GitHub-Profil aufrufen",
+    "go-to-repo": "Repository aufrufen",
+    "no-result-repos": "Keine Repositories gefunden"
+  },
+  "settings-screen": {
+    "change-language": "Sprache ändern"
+  }
+}

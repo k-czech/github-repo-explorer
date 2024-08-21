@@ -1,31 +1,57 @@
-import { StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
+import { styles } from '@/app/(tabs)/styles';
+import { InputText } from '@/components/InputText/InputText';
+import { Container } from '@/components/Container/Container';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { FlashList } from '@shopify/flash-list';
+import { Accordion } from '@/components/Accordion/Accordion';
+import { UsersContext } from '@/context/UsersContext';
+import { UsersRepositoriesContext } from '@/context/UserRepositoriesContext';
+import { EmptySearch } from '@/components/EmptySearch/EmptySearch';
+import { useTranslation } from 'react-i18next';
+import { StyledText } from '@/components/StyledText';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+export default function HomeScreen() {
+	const { setSearchText, searchUsersByUsername, users } = useContext(UsersContext);
+	const { getUserRepositories, isLoading } = useContext(UsersRepositoriesContext);
+	const { t } = useTranslation();
 
-export default function TabOneScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-    </View>
-  );
+	return (
+		<Container style={styles.container}>
+			<InputText
+				placeholder={t('home-screen:enter-username')}
+				onChangeText={(val) => setSearchText(val)}
+				returnKeyType="search"
+				keyboardType="web-search"
+				onPressSearch={searchUsersByUsername}
+				icon={<FontAwesome name="search" size={14} color="white" />}
+			/>
+			<FlashList
+				data={users}
+				keyExtractor={(item) => item.id.toString()}
+				renderItem={({ item }) => {
+					return (
+						<>
+							{isLoading ? (
+								<StyledText>{t('common:loading')}</StyledText>
+							) : (
+								<Accordion
+									key={`${item.login}-${item.id}`}
+									avatarUrl={item.avatar_url}
+									name={item.login}
+									url={item.html_url}
+									textUrl={t('home-screen:go-to-github-profile')}
+									onPress={async () => {
+										await getUserRepositories(item.login);
+									}}
+								/>
+							)}
+						</>
+					);
+				}}
+				estimatedItemSize={50}
+				ListEmptyComponent={<EmptySearch noResultText={t('home-screen:no-result-text')} />}
+			/>
+		</Container>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
