@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="809e917e-3ace-43ad-8a65-c97ff02ca657" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/__tests__ /Accordion.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /AccordionContent.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /AccordionContent.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /Avatar.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /Avatar.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /Chevron.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /Chevron.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /Container.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /Container.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /EmptySearch.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /EmptySearch.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /InputText.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /InputText.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /OpenURLButton.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /OpenURLButton.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /StyledText.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /StyledText.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__ /Tag.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__ /Tag.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Accordion/Accordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Accordion/Accordion.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Accordion/Chevron.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Accordion/Chevron.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/InputText/InputText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/InputText/InputText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/context/UsersContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/context/UsersContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/env.d.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,9 +63,9 @@
     "Jest.Tag Component.executor": "Run",
     "Jest.renders correctly.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/GRE-tests",
+    "git-widget-placeholder": "develop",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/Users/kamilczech/Desktop/mzstudiocode/github-repo-explorer/assets/fonts",
+    "last_opened_file_path": "/Users/kamilczech/Desktop/mzstudiocode/github-repo-explorer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.stylelint": "true",
@@ -192,6 +184,7 @@
       <workItem from="1723897021318" duration="26000" />
       <workItem from="1723897120238" duration="36945000" />
       <workItem from="1724048082333" duration="604000" />
+      <workItem from="1724248426008" duration="866000" />
     </task>
     <servers />
   </component>
@@ -207,7 +200,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/__tests__ /EmptySearch.test.tsx</url>
           <line>8</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

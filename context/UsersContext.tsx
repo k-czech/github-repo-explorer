@@ -22,6 +22,10 @@ export const UsersProvider = ({ children }: PropsWithChildren) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const searchUsersByUsername = useCallback(async () => {
+		if (searchText === '') {
+			setUsers([]);
+			return;
+		}
 		setIsLoading(true);
 		try {
 			const response = await executeAPI<Users>({
